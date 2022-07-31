@@ -7,7 +7,10 @@ const iphone12 = puppeteer.devices['iPhone 12 Pro'];
 exports.getScreenshot = async (url, fileName, useBuffer=false) => {
 
   console.log(url);
-  const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox']
+    })
   const page = await browser.newPage()
   //设置可视区域大小,默认的页面大小为800x600分辨率
   //   await page.setViewport({width, height})
